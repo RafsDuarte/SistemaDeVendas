@@ -1,0 +1,16 @@
+@extends('layouts.app')
+
+@section('content')
+<h1>Editar Número</h1>
+    <form action="{{route('admin.vendas.update_numero', ['number' => $number->id])}}" method="POST">
+        @csrf    
+        <div class="form-group">
+            <label>Número do Sapato</label>
+            <input type="text" name="numero" class="form-control" value="{{$number->numero}}" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-lg btn btn-success" style="margin-bottom: 40px; margin-top: 40px;" >Atualizar Número</button>
+        </div>
+    </form>
+@endsection

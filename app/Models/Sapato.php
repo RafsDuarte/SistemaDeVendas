@@ -12,15 +12,24 @@ class Sapato extends Model
     protected $fillable = [
         'nome',
         'modelo',
-        'numeracao',
-        'cor',
+        'number_id',
+        'color_id',
         'descricao',
-        'conteudo',
-        'preço'
+        'preco'
     ];
 
-    public function venda()
+    public function registrosVenda()
     {
-        return $this->hasOne(Venda::class);
+        return $this->hasOne(RegistrosVenda::class);
+    }
+
+    public function color()
+    {
+        return $this->belongsTo(Color::class);
+    }
+
+    public function number()
+    {
+        return $this->belongsTo(Number::class);
     }
 }

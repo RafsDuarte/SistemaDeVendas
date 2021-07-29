@@ -20,7 +20,7 @@
             @foreach($vendas as $venda)
             <tr>
                 <td>{{$venda->id}}</td>
-                <td>{{$venda->user->nome}}</td>
+                <td>{{$venda->user->name}}</td>
                 <td>{{$venda->cliente->nome}}</td>
                 <td>{{$venda->sapato->nome}}</td>
                 <td>{{number_format($venda->sapatoqtd, 0)}}x</td>

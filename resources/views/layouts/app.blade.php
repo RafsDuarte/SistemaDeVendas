@@ -15,36 +15,58 @@
     </head>
     <body>
          <!-- Navigation-->
-         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{{route('admin.vendas.index')}}">Minha Loja de Sapatos</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                @if (Route::has('login'))
-                    @auth
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+         @if (Route::has('login'))
+            @auth
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="{{route('admin.vendas.index')}}">Minha Loja de Sapatos</a> &nbsp; &nbsp; &nbsp;
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vendas</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{route('admin.vendas.registros')}}">Registros das Vendas</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                            <a href="#" onclick="event.preventDefault(); document.querySelector('form.logout').submit();" class="nav-link" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Sair</a>
-                            <form action="{{route('logout')}}" class="logout" method="post" style="display: none;">
-                                @csrf
-                            </form>
-                    @else
-                        <a href="{{route('login')}}" class="text-sm" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Log in</a> 
-                        &nbsp; &nbsp; &nbsp;
-                        @if (Route::has('register'))
-                                <a href="{{route('register')}}" class="ml-4 text-sm" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Register</a>
-                        @endif
-                    @endauth
-                @endif
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clientes</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('admin.vendas.registros_clientes')}}">Registros dos Clientes</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Sapatos</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('admin.vendas.registros_sapatos')}}">Registros dos Sapatos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.vendas.registros_cores')}}">Registros das Cores</a></li>
+                                        <li><a class="dropdown-item" href="{{route('admin.vendas.registros_numeros')}}">Registros dos Tamanhos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vendas</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{route('admin.vendas.registros_vendas')}}">Registros das Vendas</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                                <a href="#" onclick="event.preventDefault(); document.querySelector('form.logout').submit();" class="nav-link" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Sair</a>
+                                <form action="{{route('logout')}}" class="logout" method="post" style="display: none;">
+                                    @csrf
+                                </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+            @else
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="{{route('vendas.index')}}">Minha Loja de Sapatos</a> &nbsp; &nbsp; &nbsp;
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a href="{{route('login')}}" class="text-sm" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Entrar</a> 
+                            &nbsp; &nbsp; &nbsp;
+                            @if (Route::has('register'))
+                                    <a href="{{route('register')}}" class="ml-4 text-sm" style="text-decoration: none; color: rgba(0, 0, 0, 0.55)">Registrar</a>
+                            @endif
+                    </div>
+                </div>
+            </nav>                           
+                @endauth
+            @endif
         <!-- Header-->
         <header class="bg-dark py-5" style="margin-bottom: 40px;">
             <div class="container px-4 px-lg-5 my-5">

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Venda extends Model
+class RegistrosVenda extends Model
 {
     use HasFactory;
 
@@ -31,5 +31,4 @@ class Venda extends Model
     {
         return $this->belongsTo(Sapato::class);
     }
-
 }
